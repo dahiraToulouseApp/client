@@ -1,0 +1,76 @@
+<div
+  class="card mb-4 shadow-sm"
+  style="height: 95%; cursor: pointer"
+  (click)="onProductSelect($event)"
+>
+  <div class="card-img text-center">
+    <img
+      class="bd-placeholder-img card-img-top p-2 img-responsive mt-3 text-center"
+      width="100%"
+      [src]="productItem.image"
+    />
+  </div>
+
+  <div class="text-center" style="flex: 1 1 auto; min-height: 1">
+    <h3 class="card-text">
+      <strong>{{ productItem.name }}</strong>
+    </h3>
+    <h4 class="card-text">{{ productItem.price | currency: "EUR" }}</h4>
+    <div class="border-0 align-middle text-center">
+      <i
+        class="fa fa-minus m-3"
+        aria-hidden="true"
+        (click)="decreaseQuantity()"
+      ></i>
+      <strong>{{ quantity }}</strong>
+      <i
+        class="fa fa-plus m-3"
+        aria-hidden="true"
+        (click)="increaseQuantity()"
+      ></i>
+    </div>
+    <div class="d-flex flex-column">
+      <span
+        *ngIf="productItem && productItem.weight"
+        style="
+          background-color: #28a745;
+          color: #fff;
+          padding: 5px;
+          float: left;
+          margin-bottom: 5px;
+          width: 50px;
+        "
+        >{{ productItem.weight }}</span
+      >
+      <span
+        *ngIf="productItem && productItem.discount"
+        style="
+          margin-right: auto;
+          background-color: #d10024;
+          color: #fff;
+          padding: 5px;
+          float: left;
+          margin-bottom: 5px;
+        "
+        >- {{ productItem.discount }} %</span
+      >
+    </div>
+  </div>
+  <div
+    *ngIf="!isExistInCart"
+    class="card-footer text-center text-white"
+    (click)="handleAddToCart()"
+    id="footerButton"
+    style="color: #fff; background-color: #002855"
+  >
+    <span
+      ><i class="fa fa-plus-circle mr-2" aria-hidden="true"></i>Ajouter</span
+    >
+  </div>
+  <div
+    *ngIf="isExistInCart"
+    class="card-footer bg-success text-center text-white"
+  >
+    <span><i class="fas fa-check-circle mr-2"></i>Produit ajouté</span>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="container text-center" *ngIf="lastPurchases">
+  <table class="table">
+    <thead>
+      <tr class="alert-primary">
+        <th>Nom & Prénom</th>
+        <th>Email</th>
+        <th>Date</th>
+        <th>Nombre de commandandes</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let purchase of lastPurchases">
+        <td>
+          {{ purchase.personal.firstName + " " + purchase.personal.lastName }}
+        </td>
+        <td>{{ purchase.personal.email }}</td>
+        <td>{{ purchase.purchaseDate | date }}</td>
+        <td>{{ purchase.items.length }}</td>
+        <td>{{ getTotal(purchase.items) | currency: "EUR" }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

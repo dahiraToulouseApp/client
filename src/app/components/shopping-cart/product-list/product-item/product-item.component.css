@@ -1,0 +1,22 @@
+.div button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.img-responsive {
+  width: auto;
+  height: 130px;
+}
+#footerButton {
+  cursor: pointer;
+  background-color: white;
+  border: solid 2px #002855;
+  color: black;
+}

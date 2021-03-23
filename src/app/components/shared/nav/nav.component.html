@@ -1,0 +1,82 @@
+<nav class="navbar navbar-expand-md"></nav>
+<nav
+  class="navbar navbar-expand-md navbar-expand-mx navbar-dark shadow-lg"
+  style="background-color: #002855"
+>
+  <span href="#" class="massalik-icon massalik-icon-mx"></span>
+  <a
+    class="navbar-brand"
+    href="#"
+    style="
+      font-weight: 600;
+      letter-spacing: 2px;
+      padding-left: 12px;
+      color: #fff;
+      text-transform: uppercase;
+      margin-right: 5px;
+    "
+    >Massalik xeweul
+  </a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarCollapse"
+    aria-controls="navbarCollapse"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/home"
+          ><i class="fas fa-home m-2"></i>Acceuil</a
+        >
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/shop"
+          ><i class="fa fa-tag m-2" aria-hidden="true"></i>Boutique</a
+        >
+      </li>
+      <li class="nav-item active" *ngIf="isAdmin()">
+        <a class="nav-link" routerLink="/admin" aria-disabled="true"
+          ><i class="fa fa-lock m-2" aria-hidden="true"></i>Admin</a
+        >
+      </li>
+      <li class="nav-item active">
+        <a
+          class="nav-link"
+          routerLink="/admin"
+          aria-disabled="true"
+          routerLink="/cart"
+          ><i class="fa fa-shopping-cart text-white m-2"></i>Panier
+          <span
+            *ngIf="!(getNumberOfItemsInCart() === 0) && (isLoggedIn() | async)"
+            class="badge badge-size badge-pill ml-2"
+            style="background-color: #d10024; margin-bottom: 2px"
+            >{{ getNumberOfItemsInCart() }}</span
+          ></a
+        >
+      </li>
+    </ul>
+    <button
+      class="btn"
+      routerLink="/login"
+      *ngIf="!(isLoggedIn() | async)"
+      style="color: #fff; border-color: #fff"
+    >
+      <i class="fa fa-user-circle" aria-hidden="true"></i>
+    </button>
+
+    <button
+      class="btn text-center"
+      (click)="logout()"
+      *ngIf="isLoggedIn() | async"
+      style="color: #fff; border-color: #fff"
+    >
+      <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+    </button>
+  </div>
+</nav>
